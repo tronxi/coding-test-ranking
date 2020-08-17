@@ -1,7 +1,9 @@
 
-
+.idea/
 target/
 .settings/
 
 .project
 .classpath
+/ad-ranking-challenge.iml
+/DS_
