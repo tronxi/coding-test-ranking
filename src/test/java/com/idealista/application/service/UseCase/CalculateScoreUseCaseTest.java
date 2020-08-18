@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 public class CalculateScoreUseCaseTest {
 
     @Mock
-    private List<Scorer> scorerList;
+    private Scorer scorer;
 
     @Mock
     private AdRepository adRepository;

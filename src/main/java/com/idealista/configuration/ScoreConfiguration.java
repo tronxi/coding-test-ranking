@@ -5,9 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
-import java.util.List;
-
 @Configuration
 @RequiredArgsConstructor
 public class ScoreConfiguration {
@@ -19,12 +16,22 @@ public class ScoreConfiguration {
     private final CompleteAdScorer completeAdScorer;
 
     @Bean(name = "all")
-    public List<Scorer> scoreList() {
-        return Arrays.asList(pictureScore, descriptionTextScore, sizeDescriptionScorer, topWordScorer, completeAdScorer);
+    public Scorer scorerComposite() {
+        ScorerComposite scorerComposite = new ScorerComposite();
+        scorerComposite
+                .add(pictureScore)
+                .add(descriptionTextScore)
+                .add(sizeDescriptionScorer)
+                .add(topWordScorer)
+                .add(completeAdScorer);
+        return scorerComposite;
     }
 
     @Bean(name = "onlyPicture")
-    public List<Scorer> scoreListOnlyPicture() {
-        return Arrays.asList(pictureScore);
+    public Scorer scorerComposite1() {
+        ScorerComposite scorerComposite = new ScorerComposite();
+        scorerComposite
+                .add(pictureScore);
+        return scorerComposite;
     }
 }

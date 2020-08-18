@@ -18,7 +18,7 @@ import java.util.List;
 public class CalculateScoreUseCase implements CalculateScore {
 
     @Qualifier("all")
-    private final List<Scorer> scorer;
+    private final Scorer scorer;
 
     private final AdRepository adRepository;
 
@@ -43,10 +43,7 @@ public class CalculateScoreUseCase implements CalculateScore {
     }
 
     private Integer calculateScore(Ad ad) {
-        return scorer.stream()
-                .map(scorer -> scorer.calculate(ad))
-                .reduce(Integer::sum)
-                .orElse(0);
+        return scorer.calculate(ad);
     }
 
     private void updateIrrelevantDate(Ad scoredAd) {
