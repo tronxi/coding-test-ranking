@@ -44,7 +44,7 @@ public class ScorerCompositeTest {
     }
 
     @Test
-    public void shouldCallAllScorers2() {
+    public void shouldReturnZeroWhenScorerIsEmpty() {
         //GIVEN
         Ad ad = getEmptyAd();
 
