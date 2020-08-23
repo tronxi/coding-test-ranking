@@ -1,12 +1,12 @@
-package com.idealista.application.service.UseCase;
+package com.idealista.application.service.useCase;
 
 import com.idealista.application.model.Ad;
 import com.idealista.application.model.Score;
 import com.idealista.application.port.primary.CalculateScore;
 import com.idealista.application.port.secondary.AdRepository;
+import com.idealista.application.port.secondary.ScorerFactory;
 import com.idealista.application.service.scorer.Scorer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -17,13 +17,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CalculateScoreUseCase implements CalculateScore {
 
-    @Qualifier("all")
-    private final Scorer scorer;
+    private final ScorerFactory scorerFactory;
 
     private final AdRepository adRepository;
 
+    private Scorer scorer;
+
     @Override
     public void calculate() {
+        scorer = scorerFactory.createScorer();
         List<Ad> adList = adRepository.findAll();
         adList.forEach(this::updateAdd);
     }
@@ -34,16 +36,12 @@ public class CalculateScoreUseCase implements CalculateScore {
     }
 
     private Ad updateScore(Ad ad) {
-        Integer score = calculateScore(ad);
+        Integer score = scorer.calculate(ad);
         Ad scoredAd = ad.toBuilder()
                 .score(new Score(score))
                 .build();
         adRepository.update(scoredAd);
         return scoredAd;
-    }
-
-    private Integer calculateScore(Ad ad) {
-        return scorer.calculate(ad);
     }
 
     private void updateIrrelevantDate(Ad scoredAd) {

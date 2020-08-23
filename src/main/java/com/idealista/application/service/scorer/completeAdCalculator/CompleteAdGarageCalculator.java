@@ -3,7 +3,7 @@ package com.idealista.application.service.scorer.completeAdCalculator;
 import com.idealista.application.model.Ad;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("COMPLETE_AD_GARAGE")
 public class CompleteAdGarageCalculator extends CompleteAdCalculator {
 
     @Override

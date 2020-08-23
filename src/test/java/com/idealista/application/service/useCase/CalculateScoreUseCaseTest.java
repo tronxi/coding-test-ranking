@@ -1,7 +1,8 @@
-package com.idealista.application.service.UseCase;
+package com.idealista.application.service.useCase;
 
 import com.idealista.application.model.Ad;
 import com.idealista.application.port.secondary.AdRepository;
+import com.idealista.application.port.secondary.ScorerFactory;
 import com.idealista.application.service.scorer.Scorer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,10 +20,13 @@ import static org.mockito.Mockito.*;
 public class CalculateScoreUseCaseTest {
 
     @Mock
-    private Scorer scorer;
+    private ScorerFactory scorerFactory;
 
     @Mock
     private AdRepository adRepository;
+
+    @Mock
+    private Scorer scorer;
 
     @InjectMocks
     private CalculateScoreUseCase calculateScoreUseCase;
@@ -31,6 +35,7 @@ public class CalculateScoreUseCaseTest {
     public void shouldUpdateAllAds() {
         //GIVEN
         List<Ad> adList = Arrays.asList(getEmptyAd());
+        when(scorerFactory.createScorer()).thenReturn(scorer);
         when(adRepository.findAll()).thenReturn(adList);
 
         //WHEN

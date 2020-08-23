@@ -1,4 +1,4 @@
-package com.idealista.application.service.UseCase;
+package com.idealista.application.service.useCase;
 
 import com.idealista.application.model.Ad;
 import com.idealista.application.port.primary.FindRelevantAd;

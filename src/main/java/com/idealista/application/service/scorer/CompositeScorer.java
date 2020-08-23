@@ -7,11 +7,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class ScorerComposite implements Scorer {
+public class CompositeScorer implements Scorer {
 
     private final Set<Scorer> scorerSet = new HashSet<>();
 
-    public ScorerComposite add(Scorer scorer) {
+    public CompositeScorer add(Scorer scorer) {
         scorerSet.add(scorer);
         return this;
     }

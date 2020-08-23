@@ -3,7 +3,7 @@ package com.idealista.application.service.scorer.sizeDescriptionCalculator;
 import com.idealista.application.model.Ad;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("SIZE_DESCRIPTION_FLAT")
 public class SizeDescriptionFlatCalculator extends SizeDescriptionCalculator {
 
     private final Integer IN_LIMITS_SCORE = 10;

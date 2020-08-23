@@ -14,4 +14,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+scorer:
+  bean:
+    names:
+      pictureScorer,descriptionTextScorer,sizeDescriptionScorer,topWordScorer,completeAdScorer,a
 

@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ScorerCompositeTest {
+public class CompositeScorerTest {
 
     @Mock
     private Scorer scorer;
@@ -22,7 +22,7 @@ public class ScorerCompositeTest {
     private Scorer scorer2;
 
     @InjectMocks
-    private ScorerComposite scorerComposite;
+    private CompositeScorer compositeScorer;
 
     @Test
     public void shouldCallAllScorers() {
@@ -33,9 +33,9 @@ public class ScorerCompositeTest {
         when(scorer2.calculate(ad)).thenReturn(expectedScore);
 
         //WHEN
-        scorerComposite.add(scorer);
-        scorerComposite.add(scorer2);
-        Integer score = scorerComposite.calculate(ad);
+        compositeScorer.add(scorer);
+        compositeScorer.add(scorer2);
+        Integer score = compositeScorer.calculate(ad);
 
         //THEN
         verify(scorer).calculate(ad);
@@ -49,7 +49,7 @@ public class ScorerCompositeTest {
         Ad ad = getEmptyAd();
 
         //WHEN
-        Integer score = scorerComposite.calculate(ad);
+        Integer score = compositeScorer.calculate(ad);
 
         //THEN
         assertEquals(new Integer(0), score);

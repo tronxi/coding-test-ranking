@@ -1,7 +1,7 @@
 package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculatorFactory;
+import com.idealista.infrastructure.factory.SizeDescriptionCalculatorFactoryAdapter;
 import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionFlatCalculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 public class SizeDescriptionScorerTest {
 
     @Mock
-    private SizeDescriptionCalculatorFactory sizeDescriptionCalculatorFactory;
+    private SizeDescriptionCalculatorFactoryAdapter sizeDescriptionCalculatorFactoryAdapter;
 
     @Mock
     private SizeDescriptionFlatCalculator sizeDescriptionFlatCalculator;
@@ -32,7 +32,7 @@ public class SizeDescriptionScorerTest {
         //GIVEN
         Integer expectedScore = 20;
         Ad ad = getAdWithTypology(FLAT);
-        when(sizeDescriptionCalculatorFactory.getCalculator(FLAT)).thenReturn(sizeDescriptionFlatCalculator);
+        when(sizeDescriptionCalculatorFactoryAdapter.getCalculator(FLAT)).thenReturn(sizeDescriptionFlatCalculator);
         when(sizeDescriptionFlatCalculator.calculate(ad)).thenReturn(expectedScore);
 
         //WHEN
