@@ -8,6 +8,8 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.stereotype.Component;
 
+import static com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculator.SIZE_DESCRIPTION_NAME;
+
 @Component
 @RequiredArgsConstructor
 public class SizeDescriptionCalculatorFactoryAdapter implements SizeDescriptionCalculatorFactory {
@@ -17,9 +19,13 @@ public class SizeDescriptionCalculatorFactoryAdapter implements SizeDescriptionC
     @Override
     public SizeDescriptionCalculator getCalculator(Typology typology) {
         try {
-            return beanFactory.getBean("SIZE_DESCRIPTION_" + typology.name(), SizeDescriptionCalculator.class);
+            return getCalculatorBeanByTypology(typology);
         } catch (NoSuchBeanDefinitionException noSuchBeanDefinitionException) {
-            return beanFactory.getBean("SIZE_DESCRIPTION_DEFAULT", SizeDescriptionCalculator.class);
+            return getCalculatorBeanByTypology(Typology.DEFAULT);
         }
+    }
+
+    private SizeDescriptionCalculator getCalculatorBeanByTypology(Typology typology) {
+        return beanFactory.getBean(SIZE_DESCRIPTION_NAME + typology.name(), SizeDescriptionCalculator.class);
     }
 }

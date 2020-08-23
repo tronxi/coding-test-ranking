@@ -8,6 +8,8 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.stereotype.Component;
 
+import static com.idealista.application.service.scorer.completeAdCalculator.CompleteAdCalculator.COMPLETE_AD_NAME;
+
 @Component
 @RequiredArgsConstructor
 public class CompleteAdCalculatorFactoryAdapter implements CompleteAdCalculatorFactory {
@@ -17,9 +19,13 @@ public class CompleteAdCalculatorFactoryAdapter implements CompleteAdCalculatorF
     @Override
     public CompleteAdCalculator getCalculator(Typology typology) {
         try {
-            return beanFactory.getBean("COMPLETE_AD_" + typology.name(), CompleteAdCalculator.class);
+            return getCalculatorBeanByTypology(typology);
         } catch (NoSuchBeanDefinitionException noSuchBeanDefinitionException) {
-            return beanFactory.getBean("COMPLETE_AD_DEFAULT", CompleteAdCalculator.class);
+            return getCalculatorBeanByTypology(Typology.DEFAULT);
         }
+    }
+
+    private CompleteAdCalculator getCalculatorBeanByTypology(Typology typology) {
+        return beanFactory.getBean(COMPLETE_AD_NAME + typology.name(), CompleteAdCalculator.class);
     }
 }

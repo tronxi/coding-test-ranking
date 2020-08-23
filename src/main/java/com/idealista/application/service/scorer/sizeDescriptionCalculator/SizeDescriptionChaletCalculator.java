@@ -3,7 +3,9 @@ package com.idealista.application.service.scorer.sizeDescriptionCalculator;
 import com.idealista.application.model.Ad;
 import org.springframework.stereotype.Component;
 
-@Component("SIZE_DESCRIPTION_CHALET")
+import static com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculator.SIZE_DESCRIPTION_NAME;
+
+@Component(SIZE_DESCRIPTION_NAME + "CHALET")
 public class SizeDescriptionChaletCalculator extends SizeDescriptionCalculator {
 
     private final Integer GREATER_THAN_MAX_SCORE = 20;

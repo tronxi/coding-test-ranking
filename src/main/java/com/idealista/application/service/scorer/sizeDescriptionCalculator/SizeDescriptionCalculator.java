@@ -4,6 +4,8 @@ import com.idealista.application.model.Ad;
 
 public abstract class SizeDescriptionCalculator {
 
+    public static final String SIZE_DESCRIPTION_NAME = "SIZE_DESCRIPTION_";
+
     private final int MIN_LIMIT = 20;
     private final int MAX_LIMIT = 50;
 

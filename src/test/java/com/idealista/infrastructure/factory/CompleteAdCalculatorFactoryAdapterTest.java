@@ -12,6 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 
+import static com.idealista.application.service.scorer.completeAdCalculator.CompleteAdCalculator.COMPLETE_AD_NAME;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
@@ -33,11 +34,12 @@ public class CompleteAdCalculatorFactoryAdapterTest {
     @Test
     public void shouldReturnCompleteAdFlatCalculator() {
         //GIVEN
-        when(beanFactory.getBean("COMPLETE_AD_FLAT", CompleteAdCalculator.class))
+        Typology typology = Typology.FLAT;
+        when(beanFactory.getBean(COMPLETE_AD_NAME + typology.name(), CompleteAdCalculator.class))
                 .thenReturn(completeAdFlatCalculator);
         //WHEN
         CompleteAdCalculator completeAdCalculator =
-                completeAdCalculatorFactoryAdapter.getCalculator(Typology.FLAT);
+                completeAdCalculatorFactoryAdapter.getCalculator(typology);
         //THEN
         assertTrue(completeAdCalculator instanceof CompleteAdFlatCalculator);
     }
@@ -45,13 +47,14 @@ public class CompleteAdCalculatorFactoryAdapterTest {
     @Test
     public void shouldReturnCompleteAdDefaultCalculator() {
         //GIVEN
-        when(beanFactory.getBean("COMPLETE_AD_GARAGE", CompleteAdCalculator.class))
+        Typology typology = Typology.GARAGE;
+        when(beanFactory.getBean(COMPLETE_AD_NAME + typology.name(), CompleteAdCalculator.class))
                 .thenThrow(new NoSuchBeanDefinitionException(""));
-        when(beanFactory.getBean("COMPLETE_AD_DEFAULT", CompleteAdCalculator.class))
+        when(beanFactory.getBean(COMPLETE_AD_NAME + Typology.DEFAULT.name(), CompleteAdCalculator.class))
                 .thenReturn(completeAdDefaultCalculator);
         //WHEN
         CompleteAdCalculator completeAdCalculator =
-                completeAdCalculatorFactoryAdapter.getCalculator(Typology.GARAGE);
+                completeAdCalculatorFactoryAdapter.getCalculator(typology);
         //THEN
         assertTrue(completeAdCalculator instanceof CompleteAdDefaultCalculator);
     }

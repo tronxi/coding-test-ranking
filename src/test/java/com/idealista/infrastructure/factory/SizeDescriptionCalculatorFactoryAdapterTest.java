@@ -15,6 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 
+import static com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculator.SIZE_DESCRIPTION_NAME;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
@@ -36,11 +37,12 @@ public class SizeDescriptionCalculatorFactoryAdapterTest {
     @Test
     public void shouldReturnCompleteAdFlatCalculator() {
         //GIVEN
-        when(beanFactory.getBean("SIZE_DESCRIPTION_FLAT", SizeDescriptionCalculator.class))
+        Typology typology = Typology.FLAT;
+        when(beanFactory.getBean(SIZE_DESCRIPTION_NAME + typology.name(), SizeDescriptionCalculator.class))
                 .thenReturn(sizeDescriptionFlatCalculator);
         //WHEN
         SizeDescriptionCalculator sizeDescriptionCalculator =
-                sizeDescriptionCalculatorFactoryAdapter.getCalculator(Typology.FLAT);
+                sizeDescriptionCalculatorFactoryAdapter.getCalculator(typology);
         //THEN
         assertTrue(sizeDescriptionCalculator instanceof SizeDescriptionFlatCalculator);
     }
@@ -48,13 +50,14 @@ public class SizeDescriptionCalculatorFactoryAdapterTest {
     @Test
     public void shouldReturnCompleteAdDefaultCalculator() {
         //GIVEN
-        when(beanFactory.getBean("SIZE_DESCRIPTION_GARAGE", SizeDescriptionCalculator.class))
+        Typology typology = Typology.GARAGE;
+        when(beanFactory.getBean(SIZE_DESCRIPTION_NAME + typology.name(), SizeDescriptionCalculator.class))
                 .thenThrow(new NoSuchBeanDefinitionException(""));
-        when(beanFactory.getBean("SIZE_DESCRIPTION_DEFAULT", SizeDescriptionCalculator.class))
+        when(beanFactory.getBean(SIZE_DESCRIPTION_NAME + Typology.DEFAULT.name(), SizeDescriptionCalculator.class))
                 .thenReturn(sizeDescriptionDefaultCalculator);
         //WHEN
         SizeDescriptionCalculator sizeDescriptionCalculator =
-                sizeDescriptionCalculatorFactoryAdapter.getCalculator(Typology.GARAGE);
+                sizeDescriptionCalculatorFactoryAdapter.getCalculator(typology);
         //THEN
         assertTrue(sizeDescriptionCalculator instanceof SizeDescriptionDefaultCalculator);
     }

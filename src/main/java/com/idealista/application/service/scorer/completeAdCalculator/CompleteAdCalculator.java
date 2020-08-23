@@ -8,6 +8,8 @@ import java.util.List;
 
 public abstract class CompleteAdCalculator {
 
+    public static final String COMPLETE_AD_NAME = "COMPLETE_AD_";
+
     private final Integer COMPLETE_SCORE = 40;
     private final Integer INCOMPLETE_SCORE = 0;
 
