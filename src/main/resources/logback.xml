@@ -1,12 +1,13 @@
 <configuration>
-
-    <timestamp key="timestampFileName" datePattern="yyyy-MM-dd"/>
-
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>log/${timestampFileName}-info.log</file>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/info.log</file>
         <encoder>
             <pattern>[%-5level] - %d{"yyyy-MM-dd'/'HH:mm:ss"} - %logger{35} - %msg%n</pattern>
         </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/info_%d{dd-MM-yyyy}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
     </appender>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
