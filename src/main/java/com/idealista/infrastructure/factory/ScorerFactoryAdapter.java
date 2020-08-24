@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class ScorerFactoryAdapter implements ScorerFactory {
 
-    @Value("${scorer.bean.names}")
+    @Value("${scorer.bean.names:}")
     private List<String> scorerBeanNames;
 
     private final BeanFactory beanFactory;

@@ -18,4 +18,3 @@ scorer:
   bean:
     names:
       pictureScorer,descriptionTextScorer,sizeDescriptionScorer,topWordScorer,completeAdScorer,a
-
