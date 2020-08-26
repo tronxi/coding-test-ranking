@@ -1,7 +1,7 @@
 package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
-import com.idealista.infrastructure.factory.CompleteAdCalculatorFactoryAdapter;
+import com.idealista.application.service.scorer.completeAdCalculator.CompleteAdCalculatorFactory;
 import com.idealista.application.service.scorer.completeAdCalculator.CompleteAdFlatCalculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 public class CompleteAdScorerTest {
 
     @Mock
-    private CompleteAdCalculatorFactoryAdapter completeAdCalculatorFactory;
+    private CompleteAdCalculatorFactory completeAdCalculatorFactory;
 
     @Mock
     private CompleteAdFlatCalculator completeAdFlatCalculator;

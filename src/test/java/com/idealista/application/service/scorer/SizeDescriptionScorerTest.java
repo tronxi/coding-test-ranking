@@ -1,7 +1,7 @@
 package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
-import com.idealista.infrastructure.factory.SizeDescriptionCalculatorFactoryAdapter;
+import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculatorFactory;
 import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionFlatCalculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.idealista.application.model.Typology.FLAT;
 import static com.idealista.util.TestUtil.getAdWithTypology;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 public class SizeDescriptionScorerTest {
 
     @Mock
-    private SizeDescriptionCalculatorFactoryAdapter sizeDescriptionCalculatorFactoryAdapter;
+    private SizeDescriptionCalculatorFactory sizeDescriptionCalculatorFactory;
 
     @Mock
     private SizeDescriptionFlatCalculator sizeDescriptionFlatCalculator;
@@ -32,7 +32,7 @@ public class SizeDescriptionScorerTest {
         //GIVEN
         Integer expectedScore = 20;
         Ad ad = getAdWithTypology(FLAT);
-        when(sizeDescriptionCalculatorFactoryAdapter.getCalculator(FLAT)).thenReturn(sizeDescriptionFlatCalculator);
+        when(sizeDescriptionCalculatorFactory.getCalculator(FLAT)).thenReturn(sizeDescriptionFlatCalculator);
         when(sizeDescriptionFlatCalculator.calculate(ad)).thenReturn(expectedScore);
 
         //WHEN
