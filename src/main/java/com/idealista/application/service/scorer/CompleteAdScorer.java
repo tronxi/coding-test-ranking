@@ -2,8 +2,8 @@ package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
 import com.idealista.application.model.Typology;
-import com.idealista.application.service.scorer.completeAdCalculator.CompleteAdCalculator;
-import com.idealista.application.service.scorer.completeAdCalculator.CompleteAdCalculatorFactory;
+import com.idealista.application.service.scorer.completeadcalculator.CompleteAdCalculator;
+import com.idealista.application.service.scorer.completeadcalculator.CompleteAdCalculatorFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
 package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
-import com.idealista.application.service.scorer.completeAdCalculator.CompleteAdCalculatorFactory;
-import com.idealista.application.service.scorer.completeAdCalculator.CompleteAdFlatCalculator;
+import com.idealista.application.service.scorer.completeadcalculator.CompleteAdCalculatorFactory;
+import com.idealista.application.service.scorer.completeadcalculator.CompleteAdFlatCalculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

@@ -1,8 +1,8 @@
 package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculatorFactory;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionFlatCalculator;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionCalculatorFactory;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionFlatCalculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

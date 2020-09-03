@@ -2,10 +2,10 @@ package com.idealista.configuration;
 
 import com.google.common.collect.ImmutableMap;
 import com.idealista.application.model.Typology;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculator;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionChaletCalculator;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionDefaultCalculator;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionFlatCalculator;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionCalculator;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionChaletCalculator;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionDefaultCalculator;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionFlatCalculator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

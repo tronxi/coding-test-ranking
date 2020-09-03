@@ -2,7 +2,7 @@ package com.idealista.configuration;
 
 import com.google.common.collect.ImmutableMap;
 import com.idealista.application.model.Typology;
-import com.idealista.application.service.scorer.completeAdCalculator.*;
+import com.idealista.application.service.scorer.completeadcalculator.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

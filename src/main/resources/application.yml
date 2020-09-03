@@ -17,4 +17,4 @@ spring:
 scorer:
   bean:
     names:
-      pictureScorer,descriptionTextScorer,sizeDescriptionScorer,topWordScorer,completeAdScorer,a
+      pictureQualityScorer,descriptionTextScorer,sizeDescriptionScorer,topWordScorer,completeAdScorer,invlaidScorer

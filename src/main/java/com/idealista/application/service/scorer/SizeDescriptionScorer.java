@@ -2,8 +2,8 @@ package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
 import com.idealista.application.model.Typology;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculator;
-import com.idealista.application.service.scorer.sizeDescriptionCalculator.SizeDescriptionCalculatorFactory;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionCalculator;
+import com.idealista.application.service.scorer.sizedescriptioncalculator.SizeDescriptionCalculatorFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
