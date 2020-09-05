@@ -13,15 +13,19 @@ public abstract class SizeDescriptionCalculator {
     private final int MIN_LIMIT = 20;
     private final int MAX_LIMIT = 50;
 
-    private final String BLANK = " ";
-
     @PostConstruct
     public abstract void register();
 
     public abstract Integer calculate(Ad ad);
 
     protected int lengthDescription(String description) {
-        return description.split(BLANK).length;
+        String punctuationMarkExpresion = "[.,]";
+        String empty = "";
+        String blank = " ";
+        return description
+                .replaceAll(punctuationMarkExpresion, empty)
+                .split(blank)
+                .length;
     }
 
     protected boolean descriptionLengthIsGreaterThanMaxLimit(String description) {
