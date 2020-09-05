@@ -41,4 +41,38 @@ public class TopWordScorerTest {
         assertEquals(expectedScore, score);
     }
 
+    @Test
+    public void shouldReturnZeroWhenNoMatches() {
+        //GIVEN
+        List<String> topWords = Arrays.asList("word", "Word");
+        String description = "word1, word2. word1 Word2";
+        int expectedScore = 0;
+        Ad ad = getAdWithDescription(description);
+
+        when(topWordRepository.findAll()).thenReturn(topWords);
+
+        //WHEN
+        int score = topWordScorer.calculate(ad);
+
+        //THEN
+        assertEquals(expectedScore, score);
+    }
+
+    @Test
+    public void shouldReturnZeroWhenDescriptionIsEmpty() {
+        //GIVEN
+        List<String> topWords = Arrays.asList("word", "Word");
+        String description = "";
+        int expectedScore = 0;
+        Ad ad = getAdWithDescription(description);
+
+        when(topWordRepository.findAll()).thenReturn(topWords);
+
+        //WHEN
+        int score = topWordScorer.calculate(ad);
+
+        //THEN
+        assertEquals(expectedScore, score);
+    }
+
 }

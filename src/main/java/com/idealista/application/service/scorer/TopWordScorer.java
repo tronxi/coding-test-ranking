@@ -30,15 +30,8 @@ public class TopWordScorer implements Scorer {
 
     private Integer countRepeats(String description, List<String> topWords) {
         List<String> words = splitDescriptionInWords(description);
-        return topWords.stream()
-                .map(topWord -> countTopWordOccurrencesInDescriptionWords(words, topWord))
-                .reduce(Integer::sum)
-                .orElse(0);
-    }
-
-    private int countTopWordOccurrencesInDescriptionWords(List<String> descriptionWords, String topWord) {
-        return (int) descriptionWords.stream()
-                .filter(word -> word.equals(topWord))
+        return (int) words.stream()
+                .filter(topWords::contains)
                 .count();
     }
 
