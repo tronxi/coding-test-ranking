@@ -1,14 +1,25 @@
 package com.idealista.application.service.scorer.sizedescriptioncalculator;
 
 import com.idealista.application.model.Ad;
+import com.idealista.application.model.Typology;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.idealista.util.TestUtil.getEmptyAd;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SizeDescriptionDefaultCalculatorTest {
 
-    private final SizeDescriptionDefaultCalculator sizeDefaultScorer = new SizeDescriptionDefaultCalculator();
+    @Mock
+    private SizeDescriptionCalculatorFactory sizeDescriptionCalculatorFactory;
+
+    @InjectMocks
+    private SizeDescriptionDefaultCalculator sizeDefaultScorer;
 
     @Test
     public void shouldReturnZero() {
@@ -22,6 +33,14 @@ public class SizeDescriptionDefaultCalculatorTest {
 
         //THEN
         assertEquals(zeroScore, score);
+    }
+
+    @Test
+    public void shouldRegisterDefault() {
+        //WHEN
+        sizeDefaultScorer.register();
+        //THEN
+        verify(sizeDescriptionCalculatorFactory).register(Typology.DEFAULT, sizeDefaultScorer);
     }
 
 }

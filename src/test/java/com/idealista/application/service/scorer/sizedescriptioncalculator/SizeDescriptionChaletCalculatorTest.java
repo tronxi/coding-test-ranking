@@ -1,14 +1,25 @@
 package com.idealista.application.service.scorer.sizedescriptioncalculator;
 
 import com.idealista.application.model.Ad;
+import com.idealista.application.model.Typology;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.idealista.util.TestUtil.getAdWithDescription;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SizeDescriptionChaletCalculatorTest {
 
-    private final SizeDescriptionChaletCalculator sizeDescriptionChaletCalculator = new SizeDescriptionChaletCalculator();
+    @Mock
+    private SizeDescriptionCalculatorFactory sizeDescriptionCalculatorFactory;
+
+    @InjectMocks
+    private SizeDescriptionChaletCalculator sizeDescriptionChaletCalculator;
 
     @Test
     public void shouldReturnZeroWhenDescriptionLengthIsLessThanMaxLimit() {
@@ -38,6 +49,14 @@ public class SizeDescriptionChaletCalculatorTest {
 
         //THEN
         assertEquals(greaterThanMaxScore, score);
+    }
+
+    @Test
+    public void shouldRegisterChalet() {
+        //WHEN
+        sizeDescriptionChaletCalculator.register();
+        //THEN
+        verify(sizeDescriptionCalculatorFactory).register(Typology.CHALET, sizeDescriptionChaletCalculator);
     }
 
 }

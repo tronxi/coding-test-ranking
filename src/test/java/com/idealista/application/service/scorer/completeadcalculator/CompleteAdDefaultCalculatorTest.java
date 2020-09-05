@@ -1,14 +1,25 @@
 package com.idealista.application.service.scorer.completeadcalculator;
 
 import com.idealista.application.model.Ad;
+import com.idealista.application.model.Typology;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.idealista.util.TestUtil.getEmptyAd;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CompleteAdDefaultCalculatorTest {
 
-    private final CompleteAdDefaultCalculator completeAdDefaultCalculator = new CompleteAdDefaultCalculator();
+    @Mock
+    private CompleteAdCalculatorFactory completeAdCalculatorFactory;
+
+    @InjectMocks
+    private CompleteAdDefaultCalculator completeAdDefaultCalculator;
 
     @Test
     public void shouldReturnZero() {
@@ -21,6 +32,14 @@ public class CompleteAdDefaultCalculatorTest {
 
         //THEN
         assertEquals(expectedScorer, score);
+    }
+
+    @Test
+    public void shouldRegisterDefault() {
+        //WHEN
+        completeAdDefaultCalculator.register();
+        //THEN
+        verify(completeAdCalculatorFactory).register(Typology.DEFAULT, completeAdDefaultCalculator);
     }
 
 }

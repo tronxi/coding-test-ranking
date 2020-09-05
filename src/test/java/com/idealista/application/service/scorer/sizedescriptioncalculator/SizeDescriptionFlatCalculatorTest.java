@@ -1,17 +1,25 @@
 package com.idealista.application.service.scorer.sizedescriptioncalculator;
 
 import com.idealista.application.model.Ad;
+import com.idealista.application.model.Typology;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.idealista.util.TestUtil.getAdWithDescription;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class SizeDescriptionFlatCalculatorTest {
 
+    @Mock
+    private SizeDescriptionCalculatorFactory sizeDescriptionCalculatorFactory;
 
-    private final SizeDescriptionFlatCalculator sizeDescriptionFlatCalculator
-            = new SizeDescriptionFlatCalculator();
+    @InjectMocks
+    private SizeDescriptionFlatCalculator sizeDescriptionFlatCalculator;
 
     @Test
     public void shouldReturnZeroWhenDescriptionLengthIsLessThanMinLimit() {
@@ -53,5 +61,13 @@ public class SizeDescriptionFlatCalculatorTest {
 
         //THEN
         assertEquals(greaterThanMaxScore, score);
+    }
+
+    @Test
+    public void shouldRegisterFlat() {
+        //WHEN
+        sizeDescriptionFlatCalculator.register();
+        //THEN
+        verify(sizeDescriptionCalculatorFactory).register(Typology.FLAT, sizeDescriptionFlatCalculator);
     }
 }
