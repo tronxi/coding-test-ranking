@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "7e6126e8-3269-4bab-86dc-6c0dffea41d8",
+		"name": "idealista",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "calculate score",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6d60c8e-507d-4281-a18a-ad285527d1a5",
+						"exec": [
+							"pm.test(\"Should response with 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ads/score",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ads",
+						"score"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get quality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62981bac-7e12-491e-92ba-3bdcf036e65c",
+						"exec": [
+							"pm.test(\"Should response with ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Json length must be 4\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(4);",
+							"});",
+							"",
+							"pm.test(\"should check id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].id).to.eql(1);",
+							"    pm.expect(jsonData[1].id).to.eql(3);",
+							"    pm.expect(jsonData[2].id).to.eql(7);",
+							"    pm.expect(jsonData[3].id).to.eql(8);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ads/quality",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ads",
+						"quality"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get public",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46b007ff-800c-4ebf-96b6-d8aec036c15a",
+						"exec": [
+							"pm.test(\"Should response with ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Json length must be 5\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(5);",
+							"});",
+							"",
+							"pm.test(\"should check id order\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].id).to.eql(9);",
+							"    pm.expect(jsonData[1].id).to.eql(2);",
+							"    pm.expect(jsonData[2].id).to.eql(4);",
+							"    pm.expect(jsonData[3].id).to.eql(5);",
+							"    pm.expect(jsonData[4].id).to.eql(6);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ads/public",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ads",
+						"public"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
