@@ -16,10 +16,9 @@ jobs:
 #      script: mvn test
 #    - stage: sonar
 #      script: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
-    - stage: build
-      script: docker build -t tronxi/coding-test-ranking:$TAG .
     - stage: push
       script:
+        - docker build -t tronxi/coding-test-ranking:$TAG .
         - docker login  --username tronxi --password $DOCKER
         - docker images
         - docker push tronxi/coding-test-ranking:$TAG
