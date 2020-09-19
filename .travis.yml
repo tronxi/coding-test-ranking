@@ -8,12 +8,16 @@ notifications:
   email:
     recipients:
       - sergio.gsanchez97@gmail.com
+env:
+  - TAG=1.0
 jobs:
   include:
     - stage: test
       script: mvn test
     - stage: sonar
       script: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
+    - stage: build
+      script: docker build -t tronxi/coding-test-ranking:$TAG .
 #deploy:
 #  app: tronxi-webflux-demo
 #  provider: heroku
