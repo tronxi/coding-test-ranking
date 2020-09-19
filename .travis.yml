@@ -18,6 +18,10 @@ jobs:
       script: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
     - stage: build
       script: docker build -t tronxi/coding-test-ranking:$TAG .
+    - stage: push
+      script:
+        - docker login  --username tronxi --password $DOCKER
+        - docker push tronxi/coding-test-ranking:$TAG
 #deploy:
 #  app: tronxi-webflux-demo
 #  provider: heroku
