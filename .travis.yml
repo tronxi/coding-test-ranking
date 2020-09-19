@@ -1,4 +1,22 @@
 language: java
-script: mvn test -B
-jdk: 
-  - openjdk8
+branches:
+  only:
+    - develop
+    - master
+    - "/release-[0-999].[0-999]$/"
+notifications:
+  email:
+    recipients:
+      - sergio.gsanchez97@gmail.com
+jobs:
+  include:
+    - stage: test
+      script: mvn test
+    - stage: sonar
+      script: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
+#deploy:
+#  app: tronxi-webflux-demo
+#  provider: heroku
+#  api_key: $HEROKU
+#  on:
+#    branch: master
