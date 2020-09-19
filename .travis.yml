@@ -12,19 +12,12 @@ env:
   - TAG=1.0
 jobs:
   include:
-#    - stage: test
-#      script: mvn test
-#    - stage: sonar
-#      script: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
+    - stage: test
+      script: mvn test
+    - stage: sonar
+      script: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
     - stage: push
       script:
         - docker build -t tronxi/coding-test-ranking:$TAG .
         - docker login  --username tronxi --password $DOCKER
-        - docker images
         - docker push tronxi/coding-test-ranking:$TAG
-#deploy:
-#  app: tronxi-webflux-demo
-#  provider: heroku
-#  api_key: $HEROKU
-#  on:
-#    branch: master
