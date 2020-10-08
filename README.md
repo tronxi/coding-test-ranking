@@ -1,6 +1,7 @@
 # Reto: Servicio para gestión de calidad de los anuncios
 
 [![Build Status](https://travis-ci.com/tronxi/coding-test-ranking.svg?branch=master)](https://travis-ci.com/tronxi/coding-test-ranking)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.idealista%3Aad-ranking-challenge&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.idealista%3Aad-ranking-challenge)
 
 Este repositorio contiene un API parcialmente desarrollada para desarrollar un servicio que se encargue de medir la calidad de los anuncios. Tu objetivo será implementar las historias de usuario que se describen más adelante.
 
