@@ -9,7 +9,7 @@ env:
 install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=miw-upm-github -Dsonar.login=$SONAR
+  - mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
   - docker build -t tronxi/coding-test-ranking:$TAG .
   - docker login  --username tronxi --password $DOCKER
   - docker push tronxi/coding-test-ranking:$TAG
