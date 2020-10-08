@@ -4,10 +4,6 @@ branches:
     - develop
     - master
     - "/release-[0-999].[0-999]$/"
-#notifications:
-#  email:
-#    recipients:
-#      - sergio.gsanchez97@gmail.com
 env:
   - TAG=1.0
 install:
@@ -17,14 +13,3 @@ script:
   - docker build -t tronxi/coding-test-ranking:$TAG .
   - docker login  --username tronxi --password $DOCKER
   - docker push tronxi/coding-test-ranking:$TAG
-#jobs:
-#  include:
-#    - stage: test
-#      script: mvn install
-#    - stage: sonar
-#      script: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR_CODING
-#    - stage: push
-#      script:
-#        - docker build -t tronxi/coding-test-ranking:$TAG .
-#        - docker login  --username tronxi --password $DOCKER
-#        - docker push tronxi/coding-test-ranking:$TAG
