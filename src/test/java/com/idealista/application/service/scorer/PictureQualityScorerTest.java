@@ -1,12 +1,12 @@
 package com.idealista.application.service.scorer;
 
 import com.idealista.application.model.Ad;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
 import static com.idealista.util.TestUtil.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PictureQualityScorerTest {
 

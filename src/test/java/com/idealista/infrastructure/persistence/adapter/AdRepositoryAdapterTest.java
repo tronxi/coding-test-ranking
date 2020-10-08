@@ -4,21 +4,22 @@ import com.idealista.application.model.Ad;
 import com.idealista.infrastructure.persistence.entity.AdEntity;
 import com.idealista.infrastructure.persistence.mapper.AdMapper;
 import com.idealista.infrastructure.persistence.repository.AdRepositoryJPA;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.idealista.application.model.AdConstant.IRRELEVANT_SCORE;
-import static com.idealista.util.TestUtil.*;
+import static com.idealista.util.TestUtil.getAdEntity;
+import static com.idealista.util.TestUtil.getEmptyAd;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AdRepositoryAdapterTest {
 
     @Mock

@@ -3,14 +3,14 @@ package com.idealista.infrastructure.api.mapper;
 import com.idealista.application.model.Ad;
 import com.idealista.application.model.Typology;
 import com.idealista.infrastructure.api.model.QualityAd;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.idealista.util.TestUtil.getAdWithTypology;
 import static com.idealista.util.TestUtil.getQualityAdWithTypology;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QualityAdMapperTest {
 

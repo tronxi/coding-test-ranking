@@ -2,28 +2,18 @@ package com.idealista.infrastructure.api.controller;
 
 import com.idealista.infrastructure.api.model.PublicAd;
 import com.idealista.infrastructure.api.model.QualityAd;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWebTestClient
-@TestPropertySource(locations = "classpath:application-it.yml")
-@ActiveProfiles("it")
-@RunWith(SpringRunner.class)
+@RestTestConfig
 public class AdsControllerIT {
 
     @Autowired

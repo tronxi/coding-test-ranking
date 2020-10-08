@@ -2,14 +2,14 @@ package com.idealista.infrastructure.persistence.mapper;
 
 import com.idealista.application.model.Picture;
 import com.idealista.infrastructure.persistence.entity.PictureEntity;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.idealista.util.TestUtil.getPicture;
 import static com.idealista.util.TestUtil.getPictureEntity;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PictureMapperTest {
 

@@ -1,9 +1,9 @@
 package com.idealista.application.service.scorer.sizedescriptioncalculator;
 
 import com.idealista.application.model.Typology;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SizeDescriptionCalculatorFactoryTest {
 

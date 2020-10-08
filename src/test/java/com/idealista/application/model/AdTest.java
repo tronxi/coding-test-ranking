@@ -1,9 +1,10 @@
 package com.idealista.application.model;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import static com.idealista.util.TestUtil.getAdWithScore;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AdTest {
 
