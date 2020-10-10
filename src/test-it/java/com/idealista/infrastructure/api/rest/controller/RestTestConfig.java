@@ -1,4 +1,4 @@
-package com.idealista.infrastructure.api.controller;
+package com.idealista.infrastructure.api.rest.controller;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;

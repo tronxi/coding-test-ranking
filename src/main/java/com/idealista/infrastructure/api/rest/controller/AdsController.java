@@ -1,4 +1,4 @@
-package com.idealista.infrastructure.api.controller;
+package com.idealista.infrastructure.api.rest.controller;
 
 import com.idealista.application.model.Ad;
 import com.idealista.application.port.primary.CalculateScore;

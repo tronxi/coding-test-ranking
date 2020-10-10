@@ -1,4 +1,4 @@
-package com.idealista.infrastructure.api.controller;
+package com.idealista.infrastructure.api.rest.controller;
 
 import com.idealista.infrastructure.api.model.PublicAd;
 import com.idealista.infrastructure.api.model.QualityAd;

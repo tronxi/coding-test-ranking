@@ -1,0 +1,14 @@
+#QualityAd
+extend type Query {
+    qualityAd:[QualityAd]
+}
+
+type QualityAd {
+    typology: String
+    description: String
+    pictureUrls: [String]
+    houseSize:Int
+    gardenSize:Int
+    score:Int
+    irrelevantSince:String
+}

@@ -1,0 +1,16 @@
+#PublicAd
+extend type Query {
+    publicAd:[PublicAd]
+}
+
+extend type Mutation {
+    calculate:ID
+}
+
+type PublicAd {
+    typology: String
+    description: String
+    pictureUrls: [String]
+    houseSize:Int
+    gardenSize:Int
+}
